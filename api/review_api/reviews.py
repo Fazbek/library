@@ -39,3 +39,8 @@ async def delete_review(id: int):
 async def get_all_reviews():
     all = get_all_reviews_db()
     return all
+
+
+@review_router.get("/search-review-by-rating")
+def get_reviews_by_rating(rating: float):
+    return search_review_by_rating_db(rating=rating)

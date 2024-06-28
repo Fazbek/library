@@ -76,3 +76,9 @@ def delete_review_db(id):
         db.commit()
         return "Review successfully deleted!"
     return "Review not found"
+
+
+def search_review_by_rating_db(rating):
+    db = next(get_db())
+    reviews = db.query(Review).filter(Review.rating.contains(rating)).all()
+    return reviews

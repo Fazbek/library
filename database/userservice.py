@@ -37,13 +37,21 @@ def update_user_db(id, change_info, new_info):
                 db.commit()
                 return "Successfully changed"
             elif change_info == "email":
-                user.email = new_info
-                db.commit()
-                return "Successfully changed"
+                user = db.query(User).filter_by(email=new_info).first()
+                if user:
+                    return "This email is already in use"
+                else:
+                    user.email = new_info
+                    db.commit()
+                    return "Successfully changed"
             elif change_info == "phone_number":
-                user.phone_number = new_info
-                db.commit()
-                return "Successfully changed"
+                user = db.query(User).filter_by(phone_number=new_info).first()
+                if user:
+                    return "This phone_number is already in use"
+                else:
+                    user.phone_number = new_info
+                    db.commit()
+                    return "Successfully changed"
             elif change_info == "password":
                 user.password = new_info
                 db.commit()

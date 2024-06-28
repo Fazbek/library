@@ -128,9 +128,9 @@ def get_books_by_author_name(author_name: str):
     return get_books_by_author_name_db(author_name)
 
 
-@book_router.get("/search/")
-def search_books(query: str):
-    return search_books_db(query)
+@book_router.get("/search-by-title/")
+def search_books_by_title(title: str):
+    return search_books_by_title_db(title)
 
 
 @book_router.get("/search-by-genre")
