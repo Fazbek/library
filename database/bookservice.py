@@ -209,7 +209,7 @@ def mark_book_as_unavailable_db(id):
 #     return books
 
 
-def search_books_by_title_db(title):
+def search_books_by_title_db(title: str):
     db = next(get_db())
     books = db.query(Book).filter(Book.title.contains(title)).all()
     return books

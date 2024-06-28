@@ -9,7 +9,7 @@ def get_all_borrowings_db():
     return borrowings
 
 
-def get_borrowing_db(id):
+def get_borrowing_db(id: int):
     db = next(get_db())
     borrowing = db.query(Borrowing).filter_by(id=id).first()
     if borrowing:
