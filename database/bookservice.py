@@ -212,17 +212,23 @@ def mark_book_as_unavailable_db(id):
 def search_books_by_title_db(title: str):
     db = next(get_db())
     books = db.query(Book).filter(Book.title.contains(title)).all()
-    return books
+    if books:
+        return books
+    return "Book by title not found"
 
 
 def get_books_by_author_name_db(author_name: str):
     db = next(get_db())
     books = db.query(Book).join(Author).filter(Author.name == author_name).all()
-    return books
+    if books:
+        return books
+    return "Book by author not found"
 
 
 def get_books_by_genre_db(genre_name: str):
     db = next(get_db())
     books = db.query(Book).join(Genre).filter(Genre.name == genre_name).all()
-    return books
+    if books:
+        return books
+    return "Book by genre not found"
 
